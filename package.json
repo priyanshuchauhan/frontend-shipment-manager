@@ -1,5 +1,6 @@
 {
   "name": "freighthub-frontend-challenge",
+  "homepage": "https://priyanshuchauhan.github.io/freighthub-frontend-challenge/",
   "version": "1.0.0",
   "description": "FreightHub Frontend Coding Challenge",
   "main": "index.js",
@@ -7,9 +8,18 @@
   "author": "FreightHub Recruiting Team",
   "license": "MIT",
   "scripts": {
-    "server": "json-server db.json"
+    "server": "json-server db.json",
+    "frontend": "npm start --prefix ./frontend-shipment-manager",
+    "start": "concurrently --kill-others \"npm run server\" \"npm run frontend\""
   },
   "dependencies": {
-    "json-server": "^0.14.2"
+    "dotenv": "^8.2.0",
+    "json-server": "^0.14.2",
+    "prop-types": "^15.7.2",
+    "styled-components": "^5.0.1"
+  },
+  "devDependencies": {
+    "concurrently": "^5.1.0",
+    "gh-pages": "^2.2.0"
   }
 }
