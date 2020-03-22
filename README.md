@@ -1,3 +1,8 @@
+# Run App
+
+`npm start`
+This will run both frontend and server
+
 # FreightHub Frontend Coding Challenge
 
 Welcome to the FreightHub frontend coding challenge! Please read the following instructions carefully.

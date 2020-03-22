@@ -1,24 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import { getShipmentReport, updateShipmentData } from "./utils/apiUtil";
+import { ShipmentTable } from "./components/ShipmentTable";
+import { Title, Wrapper } from "./styles/AppStyles";
 
 function App() {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [shipmentData, setShipmentData] = useState([]);
+
+  useEffect(() => {
+    // Using an async function makes the callback function return a Promise instead of a cleanup function. Hence IIFE
+    (async function anyNameFunction() {
+      const shipmentList = await getShipmentReport(currentPage);
+      setShipmentData(shipmentList);
+    })();
+  }, [currentPage]);
+  console.log("##shipmentData", shipmentData);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Wrapper>
+        <Title>FreightHub – Europe's first digital freight forwarder !</Title>
+      </Wrapper>
+
+      {!shipmentData && "Loading..."}
+
+      {shipmentData && (
+        <div>
+          <div handlePageChange={page => setCurrentPage(page)} />
+          <div shipmentData={shipmentData} currentPage={currentPage} />
+          <ShipmentTable products={shipmentData} />
+        </div>
+      )}
     </div>
   );
 }
