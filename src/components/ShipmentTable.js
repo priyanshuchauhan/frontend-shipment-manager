@@ -1,58 +1,20 @@
-import React, { useState, useMemo } from "react"
+import React from "react"
+import PropTypes from 'prop-types'
+import { useSortableData } from './TableUtil'
+import './TableStyle.css'
 
-const useSortableData = (items, config = null) => {
-  const [sortConfig, setSortConfig] = useState(config)
 
-  const sortedItems = useMemo(() => {
-    let sortableItems = [...items]
-    if (sortConfig !== null) {
-      sortableItems.sort((a, b) => {
-        if (a[sortConfig.key] < b[sortConfig.key]) {
-          return sortConfig.direction === "ascending" ? -1 : 1
-        }
-        if (a[sortConfig.key] > b[sortConfig.key]) {
-          return sortConfig.direction === "ascending" ? 1 : -1
-        }
-        return 0
-      })
-    }
-    return sortableItems
-  }, [items, sortConfig])
-
-  const requestSort = key => {
-    let direction = "ascending"
-    if (
-      sortConfig &&
-      sortConfig.key === key &&
-      sortConfig.direction === "ascending"
-    ) {
-      direction = "descending"
-    }
-    setSortConfig({ key, direction })
-  }
-
-  return { items: sortedItems, requestSort, sortConfig }
-}
-
-export const ShipmentTable = props => {
-  const { items, requestSort, sortConfig } = useSortableData(props.products)
-  console.log("##props.products", props.products)
-  const getClassNamesFor = name => {
-    if (!sortConfig) {
-      return
-    }
-    return sortConfig.key === name ? sortConfig.direction : undefined
-  }
+export const ShipmentTable = ({products}) => {
+  const { items, updateSort } = useSortableData(products)
+  console.log("##props.products", products)
   return (
     <table>
-      <caption>Products</caption>
       <thead>
         <tr>
           <th>
             <button
               type="button"
-              onClick={() => requestSort("name")}
-              className={getClassNamesFor("name")}
+              onClick={() => updateSort("name")}
             >
               Name
             </button>
@@ -60,17 +22,23 @@ export const ShipmentTable = props => {
           <th>
             <button
               type="button"
-              onClick={() => requestSort("total")}
-              className={getClassNamesFor("price")}
+              onClick={() => updateSort("status")}
             >
-              Total
+              Status
             </button>
           </th>
           <th>
             <button
               type="button"
-              onClick={() => requestSort("total")}
-              className={getClassNamesFor("total")}
+              onClick={() => updateSort("destination")}
+            >
+              Destination
+            </button>
+          </th>
+          <th>
+            <button
+              type="button"
+              onClick={() => updateSort("total")}
             >
               Total
             </button>
@@ -80,13 +48,17 @@ export const ShipmentTable = props => {
       <tbody>
         {items.map(item => (
           <tr key={item.id}>
+            <td>{item.name}</td>
             <td>{item.status}</td>
             <td>{item.destination}</td>
             <td>${item.total}</td>
-            <td>{item.stock}</td>
           </tr>
         ))}
       </tbody>
     </table>
   )
+}
+
+ShipmentTable.propTypes = {
+  products: PropTypes.object.isRequired
 }

@@ -7,7 +7,7 @@ export const Title = styled.h1`
 `;
 
 export const Wrapper = styled.section`
-  padding: 4em;
+  padding: 1.5em;
   background: papayawhip;
 `;
 

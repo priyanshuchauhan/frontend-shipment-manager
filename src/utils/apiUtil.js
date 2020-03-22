@@ -6,8 +6,8 @@ import { shipmentURL, GET, PATCH } from "./constants";
  * @param {String} page for pagination
  * @returns {Promise} API call promise
  */
-export const getShipmentReport = async (page = 1) =>
-  getShipmentReporttDI(fetch, GET, `page=${page}`);
+export const getShipmentReport = async (page = 1, limit = 20) =>
+  getShipmentReporttDI(fetch, GET, `page=${page}&_limit=${limit}`);
 
 export const updateShipmentData = async (data = {}) =>
   getShipmentReporttDI(fetch, PATCH, data);

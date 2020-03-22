@@ -19,7 +19,7 @@ function App() {
   return (
     <div>
       <Wrapper>
-        <Title>FreightHub – Europe's first digital freight forwarder !</Title>
+        <Title>Track and update Shipment !</Title>
       </Wrapper>
 
       {!shipmentData && "Loading..."}
