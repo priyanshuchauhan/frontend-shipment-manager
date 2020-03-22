@@ -7,8 +7,13 @@ import { shipmentURL, GET, PATCH } from "./constants";
  * @param {String} page for pagination
  * @returns {Promise} API call promise
  */
-export const getShipmentReport = async (page = 1, limit = 20) =>
-  getShipmentReporttDI(fetch, GET, `page=${page}&_limit=${limit}`);
+export const getShipmentReport = async (page = 1, id = null, limit = 20) => {
+  let queryString = `page=${page}&_limit=${limit}`
+  if (id) {
+    queryString = `${queryString}&id=${id}`
+  }
+  return getShipmentReporttDI(fetch, GET, queryString)
+}
 
 export const updateShipmentData = async (data = {}) =>
   getShipmentReporttDI(fetch, PATCH, data);
@@ -22,10 +27,10 @@ export const updateShipmentData = async (data = {}) =>
  */
 export async function getShipmentReporttDI(fetch, method = GET, data = {}) {
   /* Used to to deploy to github pages
-  const promise = new Promise((resolve, reject) => {
-    resolve(apiMock.shipments);
-  });
-  return promise;
+    const promise = new Promise((resolve, reject) => {
+      resolve(apiMock.shipments);
+    });
+    return promise;
   */
 
   let requestURL = shipmentURL;

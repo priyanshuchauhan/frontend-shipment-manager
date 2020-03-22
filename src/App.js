@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { getShipmentReport, updateShipmentData } from "./utils/apiUtil";
+import { getShipmentReport } from "./utils/apiUtil";
 import { ShipmentTable } from "./components/ShipmentTable";
+import { ShipmentDetail } from "./components/ShipmentDetail";
 import { Title, Wrapper } from "./styles/AppStyles";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -11,27 +13,24 @@ function App() {
     // Using an async function makes the callback function return a Promise instead of a cleanup function. Hence IIFE
     (async function anyNameFunction() {
       const shipmentList = await getShipmentReport(currentPage);
-      setShipmentData(shipmentList);
+      shipmentList && setShipmentData(shipmentList);
     })();
   }, [currentPage]);
-  console.log("##shipmentData", shipmentData);
 
   return (
-    <div>
-      <Wrapper>
-        <Title>Track and update Shipment !</Title>
-      </Wrapper>
-
-      {!shipmentData && "Loading..."}
-
-      {shipmentData && (
-        <div>
-          <div handlePageChange={page => setCurrentPage(page)} />
-          <div shipmentData={shipmentData} currentPage={currentPage} />
-          <ShipmentTable products={shipmentData} />
-        </div>
-      )}
-    </div>
+      <Router>
+        <Wrapper>
+          <Title>Track and update Shipment !</Title>
+        </Wrapper>
+        <Switch>
+          <Route path="/shipment-details/:id">
+            <ShipmentDetail />
+          </Route>
+          <Route path="/">
+            <ShipmentTable products={shipmentData} setCurrentPage={setCurrentPage}/>
+          </Route>
+        </Switch>
+      </Router>
   );
 }
 
