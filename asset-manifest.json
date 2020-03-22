@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/frontend-shipment-manager/static/css/main.fc39fe66.chunk.css",
-    "main.js": "/frontend-shipment-manager/static/js/main.ff9e1c18.chunk.js",
-    "main.js.map": "/frontend-shipment-manager/static/js/main.ff9e1c18.chunk.js.map",
+    "main.js": "/frontend-shipment-manager/static/js/main.73b8015f.chunk.js",
+    "main.js.map": "/frontend-shipment-manager/static/js/main.73b8015f.chunk.js.map",
     "runtime-main.js": "/frontend-shipment-manager/static/js/runtime-main.dc4d9789.js",
     "runtime-main.js.map": "/frontend-shipment-manager/static/js/runtime-main.dc4d9789.js.map",
-    "static/js/2.f19b4639.chunk.js": "/frontend-shipment-manager/static/js/2.f19b4639.chunk.js",
-    "static/js/2.f19b4639.chunk.js.map": "/frontend-shipment-manager/static/js/2.f19b4639.chunk.js.map",
+    "static/js/2.8963e200.chunk.js": "/frontend-shipment-manager/static/js/2.8963e200.chunk.js",
+    "static/js/2.8963e200.chunk.js.map": "/frontend-shipment-manager/static/js/2.8963e200.chunk.js.map",
     "index.html": "/frontend-shipment-manager/index.html",
-    "precache-manifest.217b3b30bd8ff42db4a22814164edfbd.js": "/frontend-shipment-manager/precache-manifest.217b3b30bd8ff42db4a22814164edfbd.js",
+    "precache-manifest.50022a7907f5398589238d65b0ff3bff.js": "/frontend-shipment-manager/precache-manifest.50022a7907f5398589238d65b0ff3bff.js",
     "service-worker.js": "/frontend-shipment-manager/service-worker.js",
     "static/css/main.fc39fe66.chunk.css.map": "/frontend-shipment-manager/static/css/main.fc39fe66.chunk.css.map",
-    "static/js/2.f19b4639.chunk.js.LICENSE.txt": "/frontend-shipment-manager/static/js/2.f19b4639.chunk.js.LICENSE.txt"
+    "static/js/2.8963e200.chunk.js.LICENSE.txt": "/frontend-shipment-manager/static/js/2.8963e200.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.dc4d9789.js",
-    "static/js/2.f19b4639.chunk.js",
+    "static/js/2.8963e200.chunk.js",
     "static/css/main.fc39fe66.chunk.css",
-    "static/js/main.ff9e1c18.chunk.js"
+    "static/js/main.73b8015f.chunk.js"
   ]
 }
