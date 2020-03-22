@@ -1,6 +1,6 @@
 {
   "name": "frontend-shipment-manager",
-  "homepage": "https://priyanshuchauhan.github.io/freighthub-frontend-challenge/",
+  "homepage": "https://priyanshuchauhan.github.io/frontend-shipment-manager/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -22,7 +22,8 @@
     "eject": "react-scripts eject",
     "server": "json-server db.json",
     "start": "concurrently --kill-others \"npm run server\" \"npm run frontend\"",
-    "lint": "eslint src/**/*.js src/**/*.jsx"
+    "lint": "eslint src/**/*.js src/**/*.jsx",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
